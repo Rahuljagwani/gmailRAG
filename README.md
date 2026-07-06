@@ -55,3 +55,7 @@ Adopt techniques from Anthropic's Contextual Retrieval:
 - These stack: Anthropic reports ~49% fewer retrieval misses, ~67% with reranking added.
 
 Plus: only draft on genuine benefits questions, and auto-verify each quote appears in its cited source.
+
+Each citation already names the document, section, page, and an exact quote, so the source is
+easy to find; with more time the citations could also link straight to the plan PDF (e.g. the
+files in Google Drive) to open the document in one click.
