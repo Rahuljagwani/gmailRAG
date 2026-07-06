@@ -21,7 +21,7 @@ from pydantic import BaseModel, model_validator
 import config
 from rag.answer import AnswerResult, answer_question
 
-app = FastAPI(title="Benefits RAG backend", version="1.0.0")
+app = FastAPI(title="Grove | HR Reply Assistant backend", version="1.0.0")
 
 
 class AnswerRequest(BaseModel):
