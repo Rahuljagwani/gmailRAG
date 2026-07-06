@@ -16,7 +16,7 @@ services:
       - key: ANTHROPIC_API_KEY
         sync: false
       - key: ANTHROPIC_MODEL
-        value: claude-sonnet-4-6
+        value: claude-haiku-4-5-20251001
       - key: PINECONE_API_KEY
         sync: false
       - key: PINECONE_INDEX

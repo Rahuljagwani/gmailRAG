@@ -68,6 +68,23 @@ function buildAnswerCard_(result) {
       )
   );
 
+  var buttons = CardService.newButtonSet()
+    .addButton(
+      CardService.newTextButton()
+        .setText('Insert into reply')
+        .setTextButtonStyle(CardService.TextButtonStyle.FILLED)
+        .setComposeAction(
+          CardService.newAction().setFunctionName('onInsertReply'),
+          CardService.ComposedEmailType.REPLY_AS_DRAFT
+        )
+    )
+    .addButton(
+      CardService.newTextButton()
+        .setText('Regenerate')
+        .setOnClickAction(CardService.newAction().setFunctionName('onRegenerate'))
+    );
+  builder.addSection(CardService.newCardSection().addWidget(buttons));
+
   var citations = result.citations || [];
   if (citations.length) {
     var citeSection = CardService.newCardSection().setHeader(
@@ -85,23 +102,6 @@ function buildAnswerCard_(result) {
     }
     builder.addSection(citeSection);
   }
-
-  var buttons = CardService.newButtonSet()
-    .addButton(
-      CardService.newTextButton()
-        .setText('Insert into reply')
-        .setTextButtonStyle(CardService.TextButtonStyle.FILLED)
-        .setComposeAction(
-          CardService.newAction().setFunctionName('onInsertReply'),
-          CardService.ComposedEmailType.REPLY_AS_DRAFT
-        )
-    )
-    .addButton(
-      CardService.newTextButton()
-        .setText('Regenerate')
-        .setOnClickAction(CardService.newAction().setFunctionName('onRegenerate'))
-    );
-  builder.addSection(CardService.newCardSection().addWidget(buttons));
 
   return builder.build();
 }

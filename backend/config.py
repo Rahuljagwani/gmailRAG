@@ -16,7 +16,7 @@ PINECONE_NAMESPACE = os.getenv("PINECONE_NAMESPACE", "__default__")
 
 # --- Generation (Claude) ---
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
-ANTHROPIC_MODEL = os.getenv("ANTHROPIC_MODEL", "claude-sonnet-4-6")
+ANTHROPIC_MODEL = os.getenv("ANTHROPIC_MODEL", "claude-haiku-4-5-20251001")
 
 # --- Backend auth ---
 BACKEND_SHARED_SECRET = os.getenv("BACKEND_SHARED_SECRET", "")
