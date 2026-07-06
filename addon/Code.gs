@@ -92,13 +92,17 @@ function buildAnswerCard_(result) {
     );
     for (var i = 0; i < citations.length; i++) {
       var c = citations[i];
-      var label = c.doc + ' · ' + (c.section || '') + (c.page ? ' (p' + c.page + ')' : '');
-      citeSection.addWidget(
-        CardService.newDecoratedText()
-          .setTopLabel(label)
-          .setText(escapeHtml(truncate(c.quote || '', 220)))
-          .setWrapText(true)
-      );
+      // Keep the top label short (doc + page) so the page number is never truncated away;
+      // the longer section title goes on its own bottom line.
+      var topLabel = c.doc + (c.page ? '  ·  p' + c.page : '');
+      var deco = CardService.newDecoratedText()
+        .setTopLabel(topLabel)
+        .setText(escapeHtml(truncate(c.quote || '', 220)))
+        .setWrapText(true);
+      if (c.section) {
+        deco.setBottomLabel(c.section);
+      }
+      citeSection.addWidget(deco);
     }
     builder.addSection(citeSection);
   }
