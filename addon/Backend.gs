@@ -25,15 +25,20 @@ function getBackendConfig_() {
  * POST the open email to /answer and return the structured result.
  * @param {string} subject
  * @param {string} body
+ * @param {string} senderName first name of the email sender (for the greeting)
  * @return {{answer: string, citations: Object[], has_clear_answer: boolean, retrieval: Object[]}}
  */
-function callAnswerBackend_(subject, body) {
+function callAnswerBackend_(subject, body, senderName) {
   var cfg = getBackendConfig_();
   var response = UrlFetchApp.fetch(cfg.url + '/answer', {
     method: 'post',
     contentType: 'application/json',
     headers: { 'X-API-Key': cfg.secret },
-    payload: JSON.stringify({ subject: subject, body: body }),
+    payload: JSON.stringify({
+      subject: subject,
+      body: body,
+      sender_name: senderName || ''
+    }),
     muteHttpExceptions: true
   });
 

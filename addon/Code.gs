@@ -1,69 +1,42 @@
 /**
- * Grove | HR Reply Assistant (Gmail Add-on, Commit 8: wired to backend)
+ * Grove | HR Reply Assistant (Gmail Add-on)
  *
- * Contextual trigger renders a preview of the open email with a "Draft reply with Grove"
- * button. The button POSTs the email to the FastAPI /answer backend and renders the
- * grounded draft, citation chips, and a warning banner when the documents don't clearly
- * answer the question. (Commit 9 adds an editable field + insert-into-reply.)
+ * When an email is opened, Grove POSTs it to the FastAPI /answer backend and renders the
+ * grounded draft directly (no extra click): citation chips, a warning banner when the
+ * documents don't clearly answer, an editable draft field, and an "Insert into reply"
+ * compose action.
  */
 
 /**
  * Entry point declared in appsscript.json (gmail.contextualTriggers.onTriggerFunction).
+ * Generates the draft immediately on open.
  * @param {Object} e Gmail add-on event; e.gmail has messageId + a scoped accessToken.
- * @return {Card[]} the card(s) to render in the sidebar.
+ * @return {Card[]}
  */
 function onGmailMessageOpen(e) {
-  var msg = readOpenMessage(e);
-  var preview = truncate(msg.body, 400);
-
-  var section = CardService.newCardSection()
-    .addWidget(
-      CardService.newDecoratedText().setTopLabel('From').setText(msg.from).setWrapText(true)
-    )
-    .addWidget(
-      CardService.newDecoratedText()
-        .setTopLabel('Subject')
-        .setText(msg.subject)
-        .setWrapText(true)
-    )
-    .addWidget(CardService.newTextParagraph().setText('<b>Email preview</b>'))
-    .addWidget(CardService.newTextParagraph().setText(escapeHtml(preview)))
-    .addWidget(
-      CardService.newTextButton()
-        .setText('Draft reply with Grove')
-        .setTextButtonStyle(CardService.TextButtonStyle.FILLED)
-        .setOnClickAction(CardService.newAction().setFunctionName('onDraftReply'))
-    );
-
-  return [
-    CardService.newCardBuilder()
-      .setHeader(
-        CardService.newCardHeader()
-          .setTitle('Grove')
-          .setSubtitle('HR reply assistant · grounded in the plan documents')
-      )
-      .addSection(section)
-      .build()
-  ];
+  return [buildDraftCardForMessage_(e)];
 }
 
 /**
- * Button handler: call the backend and push a card with the grounded draft.
- * @param {Object} e Gmail add-on action event (carries e.gmail context).
+ * Regenerate handler: rebuild the draft card in place.
+ * @param {Object} e Gmail add-on action event.
  * @return {ActionResponse}
  */
-function onDraftReply(e) {
-  var msg = readOpenMessage(e);
-  var card;
-  try {
-    var result = callAnswerBackend_(msg.subject, msg.body);
-    card = buildAnswerCard_(result);
-  } catch (err) {
-    card = buildErrorCard_(err.message);
-  }
+function onRegenerate(e) {
   return CardService.newActionResponseBuilder()
-    .setNavigation(CardService.newNavigation().pushCard(card))
+    .setNavigation(CardService.newNavigation().updateCard(buildDraftCardForMessage_(e)))
     .build();
+}
+
+/** Reads the open message, calls the backend, and returns an answer card (or error card). */
+function buildDraftCardForMessage_(e) {
+  try {
+    var msg = readOpenMessage(e);
+    var result = callAnswerBackend_(msg.subject, msg.body, firstNameFromSender_(msg.from));
+    return buildAnswerCard_(result);
+  } catch (err) {
+    return buildErrorCard_(err.message);
+  }
 }
 
 /** Builds the card that shows the grounded draft + citations (+ warning if unsupported). */
@@ -85,8 +58,14 @@ function buildAnswerCard_(result) {
 
   builder.addSection(
     CardService.newCardSection()
-      .setHeader('Draft')
-      .addWidget(CardService.newTextParagraph().setText(mdToCardHtml_(result.answer || '')))
+      .setHeader('Draft (editable)')
+      .addWidget(
+        CardService.newTextInput()
+          .setFieldName('draft')
+          .setTitle('Edit before inserting')
+          .setMultiline(true)
+          .setValue(mdToPlainText_(result.answer || ''))
+      )
   );
 
   var citations = result.citations || [];
@@ -107,15 +86,37 @@ function buildAnswerCard_(result) {
     builder.addSection(citeSection);
   }
 
-  builder.addSection(
-    CardService.newCardSection().addWidget(
+  var buttons = CardService.newButtonSet()
+    .addButton(
+      CardService.newTextButton()
+        .setText('Insert into reply')
+        .setTextButtonStyle(CardService.TextButtonStyle.FILLED)
+        .setComposeAction(
+          CardService.newAction().setFunctionName('onInsertReply'),
+          CardService.ComposedEmailType.REPLY_AS_DRAFT
+        )
+    )
+    .addButton(
       CardService.newTextButton()
         .setText('Regenerate')
-        .setOnClickAction(CardService.newAction().setFunctionName('onDraftReply'))
-    )
-  );
+        .setOnClickAction(CardService.newAction().setFunctionName('onRegenerate'))
+    );
+  builder.addSection(CardService.newCardSection().addWidget(buttons));
 
   return builder.build();
+}
+
+/**
+ * Compose action: create a Gmail draft reply pre-filled with the (edited) draft text.
+ * @param {Object} e action event; e.formInput.draft holds the edited text.
+ * @return {ComposeActionResponse}
+ */
+function onInsertReply(e) {
+  var draftText = (e.formInput && e.formInput.draft) || '';
+  GmailApp.setCurrentMessageAccessToken(e.gmail.accessToken);
+  var message = GmailApp.getMessageById(e.gmail.messageId);
+  var draft = message.createDraftReply(draftText);
+  return CardService.newComposeActionResponseBuilder().setGmailDraft(draft).build();
 }
 
 /** Builds a simple error card with a retry button. */
@@ -167,9 +168,22 @@ function escapeHtml(text) {
     .replace(/>/g, '&gt;');
 }
 
-/** Converts the model's light markdown (**bold**, newlines) to Gmail-card HTML. */
-function mdToCardHtml_(text) {
-  return escapeHtml(text)
-    .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
-    .replace(/\n/g, '<br>');
+/** Strips markdown markers so the editable draft / inserted reply is clean plain text. */
+function mdToPlainText_(text) {
+  return String(text).replace(/\*\*(.+?)\*\*/g, '$1');
+}
+
+/**
+ * Extracts a likely first name from a Gmail "From" header like
+ * "Jane Doe <jane@x.com>" -> "Jane". Returns '' if it looks like a non-personal sender
+ * (e.g. "GSoC Program Admins", "no-reply"), so the backend falls back to "Hi there,".
+ */
+function firstNameFromSender_(from) {
+  if (!from) return '';
+  var name = from.split('<')[0].trim().replace(/^"|"$/g, '');
+  if (!name || /no-?reply|team|admin|support|notification/i.test(name)) return '';
+  var first = name.split(/\s+/)[0];
+  // only treat as a name if it's alphabetic and not an org-ish all-caps acronym
+  if (!/^[A-Za-z][A-Za-z'.-]*$/.test(first)) return '';
+  return first;
 }
