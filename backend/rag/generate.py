@@ -51,8 +51,13 @@ outcome depends on conditions (e.g. "reimbursed only if the service isn't availa
 them. Do not treat "it depends" or the sender's own uncertainty as a reason to set false.
 6. If the same figure appears under different effective dates, use the MOST RECENT \
 effective date and mention that an older value existed. Never average or mix them.
-7. Write the answer in a warm, clear, professional tone suitable for pasting into an \
-email reply. Be concise; do not invent greetings or signatures.
+7. Write the answer as a complete, ready-to-send email reply:
+   - Open with a short greeting. If a sender name is given and it looks like a personal \
+first name, use "Hi <FirstName>,"; otherwise use "Hi there,".
+   - Then 1-3 concise paragraphs. Use short bullets ONLY for a list of figures/steps.
+   - Close with a brief professional sign-off: "Best regards," on its own line, then \
+"Benefits Team".
+   Keep the whole reply concise and skimmable - short is better than exhaustive.
 
 Final self-check before you submit: if your answer describes ANY plan provision or figure \
 from the sources, then has_clear_answer MUST be true and citations MUST be non-empty."""
@@ -120,14 +125,15 @@ def _format_sources(hits: list[Hit]) -> str:
     return "\n\n".join(blocks)
 
 
-def build_user_message(question: str, hits: list[Hit]) -> str:
+def build_user_message(question: str, hits: list[Hit], sender_name: str = "") -> str:
+    sender_line = f"SENDER NAME: {sender_name}\n\n" if sender_name.strip() else ""
     if not hits:
         return (
-            f"QUESTION:\n{question}\n\nSOURCES:\n(none retrieved)\n\n"
+            f"{sender_line}QUESTION:\n{question}\n\nSOURCES:\n(none retrieved)\n\n"
             "No sources were retrieved. Set has_clear_answer to false."
         )
     return (
-        f"QUESTION:\n{question}\n\n"
+        f"{sender_line}QUESTION:\n{question}\n\n"
         f"SOURCES (answer only from these):\n{_format_sources(hits)}"
     )
 
@@ -138,7 +144,9 @@ def _client():
     return Anthropic(api_key=config.require("ANTHROPIC_API_KEY"))
 
 
-def generate(question: str, hits: list[Hit], max_tokens: int = 2048) -> dict:
+def generate(
+    question: str, hits: list[Hit], sender_name: str = "", max_tokens: int = 2048
+) -> dict:
     """Call Claude with the grounding prompt and return the structured answer dict.
 
     Control fields (has_clear_answer, citations) are ordered before the long ``answer``
@@ -149,7 +157,9 @@ def generate(question: str, hits: list[Hit], max_tokens: int = 2048) -> dict:
         model=config.ANTHROPIC_MODEL,
         max_tokens=max_tokens,
         system=SYSTEM,
-        messages=[{"role": "user", "content": build_user_message(question, hits)}],
+        messages=[
+            {"role": "user", "content": build_user_message(question, hits, sender_name)}
+        ],
         tools=[ANSWER_TOOL],
         tool_choice={"type": "tool", "name": "submit_answer"},
     )

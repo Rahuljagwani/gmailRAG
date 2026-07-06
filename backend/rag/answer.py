@@ -64,11 +64,12 @@ def answer_question(
     top_k: int = 15,
     rerank: bool = False,
     top_n: int = 5,
+    sender_name: str = "",
 ) -> AnswerResult:
     hits = retrieve(question, top_k=top_k, rerank=rerank, top_n=top_n)
     # Only the top_n chunks are sent to the model; the rest stay in the trace.
     used = hits[:top_n] if hits else []
-    result = generate(question, used)
+    result = generate(question, used, sender_name=sender_name)
     return AnswerResult(
         question=question,
         answer=result.get("answer") or "",

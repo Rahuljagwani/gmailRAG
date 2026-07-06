@@ -28,6 +28,7 @@ class AnswerRequest(BaseModel):
     subject: str = ""
     body: str = ""
     question: str = ""
+    sender_name: str = ""
     top_k: int = 15
     top_n: int = 5
     rerank: bool = False
@@ -72,5 +73,9 @@ def health() -> dict:
 @app.post("/answer", response_model=AnswerResult)
 def answer(req: AnswerRequest, _: None = Depends(require_api_key)) -> AnswerResult:
     return answer_question(
-        req.to_query(), top_k=req.top_k, rerank=req.rerank, top_n=req.top_n
+        req.to_query(),
+        top_k=req.top_k,
+        rerank=req.rerank,
+        top_n=req.top_n,
+        sender_name=req.sender_name,
     )
