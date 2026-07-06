@@ -1,0 +1,25 @@
+# Render.com blueprint for the Benefits RAG backend.
+# Deploy: push to GitHub, then in Render -> New -> Blueprint, point at this repo.
+# Set the secret env vars (marked sync: false) in the Render dashboard, not here.
+services:
+  - type: web
+    name: email-rag-backend
+    runtime: python
+    rootDir: backend
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.7"
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: ANTHROPIC_MODEL
+        value: claude-sonnet-4-6
+      - key: PINECONE_API_KEY
+        sync: false
+      - key: PINECONE_INDEX
+        sync: false
+      - key: BACKEND_SHARED_SECRET
+        sync: false
