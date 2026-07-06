@@ -1,0 +1,890 @@
+[
+  {
+    "email": {
+      "id": 1,
+      "subject": "FSA contribution question",
+      "from": "jmartinez@company.com",
+      "body": "Hi, I'm setting up my elections for next year and I thought the max I could put into my Health FSA was $3,200. A coworker mentioned it went up. Can you confirm what the actual limit is for 2026, and whether there's a minimum I have to contribute too?",
+      "expect": {
+        "clear_answer": true,
+        "docs": [
+          "HCSA"
+        ],
+        "must_mention": [
+          "$3,300",
+          "$120"
+        ],
+        "notes": "2026 Health FSA max = $3,300 (up from $3,200); minimum = $120. Straightforward lookup."
+      }
+    },
+    "result": {
+      "question": "Subject: FSA contribution question\n\nHi, I'm setting up my elections for next year and I thought the max I could put into my Health FSA was $3,200. A coworker mentioned it went up. Can you confirm what the actual limit is for 2026, and whether there's a minimum I have to contribute too?",
+      "answer": "Hi there,\n\nYou're correct that the limit went up! For 2026, the maximum you can contribute to your Health FSA is $3,300\u2014an increase from the $3,200 limit you mentioned. There is no required minimum contribution, but if you do contribute, the minimum amount is $120.\n\nBest regards,\nBenefits Team",
+      "citations": [
+        {
+          "doc": "HCSA",
+          "section": "maximum annual contribution limit",
+          "page": 4,
+          "quote": "Effective January 1, 2026 the maximum amount you're allowed to contribute to the Chevron Health FSA is increasing: \u2022 You can contribute up to $3,300 (increase from $3,200).* \u2022 The minimum contribution remains $120."
+        }
+      ],
+      "has_clear_answer": true,
+      "retrieval": [
+        {
+          "id": "HCSA::3",
+          "score": 0.6929121017456055,
+          "doc": "HCSA",
+          "section": "maximum annual contribution limit",
+          "page_start": 4,
+          "page_end": 4,
+          "effective_date": "January 2026"
+        },
+        {
+          "id": "HCSA::40",
+          "score": 0.562921404838562,
+          "doc": "HCSA",
+          "section": "maximum annual contribution limit",
+          "page_start": 19,
+          "page_end": 19,
+          "effective_date": "January 2021"
+        },
+        {
+          "id": "HCSA::74",
+          "score": 0.5187996029853821,
+          "doc": "HCSA",
+          "section": "your contributions",
+          "page_start": 42,
+          "page_end": 42,
+          "effective_date": "January 2020"
+        },
+        {
+          "id": "HCSA::9",
+          "score": 0.5166614055633545,
+          "doc": "HCSA",
+          "section": "2022 maximum annual contribution limit",
+          "page_start": 6,
+          "page_end": 6,
+          "effective_date": "January 2022"
+        },
+        {
+          "id": "HCSA::29",
+          "score": 0.5072841644287109,
+          "doc": "HCSA",
+          "section": "reminder: HCSA 2021 maximum annual contribution limit",
+          "page_start": 15,
+          "page_end": 15,
+          "effective_date": "January 2021"
+        },
+        {
+          "id": "HCSA::34",
+          "score": 0.5060334801673889,
+          "doc": "HCSA",
+          "section": "HCSA 2021 maximum annual contribution limit",
+          "page_start": 17,
+          "page_end": 17,
+          "effective_date": "January 2021"
+        },
+        {
+          "id": "HCSA::21",
+          "score": 0.46323734521865845,
+          "doc": "HCSA",
+          "section": "what\u2019s changed?",
+          "page_start": 12,
+          "page_end": 12,
+          "effective_date": null
+        },
+        {
+          "id": "HCSA::17",
+          "score": 0.46060675382614136,
+          "doc": "HCSA",
+          "section": "example",
+          "page_start": 9,
+          "page_end": 10,
+          "effective_date": "January 2022"
+        },
+        {
+          "id": "HCSA::33",
+          "score": 0.4556305706501007,
+          "doc": "HCSA",
+          "section": "how it works",
+          "page_start": 16,
+          "page_end": 17,
+          "effective_date": "January 2021"
+        },
+        {
+          "id": "HCSA::60",
+          "score": 0.45395979285240173,
+          "doc": "HCSA",
+          "section": "overview",
+          "page_start": 32,
+          "page_end": 32,
+          "effective_date": "January 2020"
+        },
+        {
+          "id": "HCSA::28",
+          "score": 0.45196616649627686,
+          "doc": "HCSA",
+          "section": "step three example",
+          "page_start": 14,
+          "page_end": 15,
+          "effective_date": "January 2021"
+        },
+        {
+          "id": "HCSA::2",
+          "score": 0.43713945150375366,
+          "doc": "HCSA",
+          "section": "annual contribution limit health care flexible spending account effective january 1, 2026",
+          "page_start": 4,
+          "page_end": 4,
+          "effective_date": "January 2026"
+        },
+        {
+          "id": "HCSA::16",
+          "score": 0.43216174840927124,
+          "doc": "HCSA",
+          "section": "Step 3: How to use your carryover",
+          "page_start": 8,
+          "page_end": 9,
+          "effective_date": "January 2022"
+        },
+        {
+          "id": "HCSA::27",
+          "score": 0.43206608295440674,
+          "doc": "HCSA",
+          "section": "Step 3: How to use your carryover",
+          "page_start": 14,
+          "page_end": 14,
+          "effective_date": null
+        },
+        {
+          "id": "HCSA::26",
+          "score": 0.4269850552082062,
+          "doc": "HCSA",
+          "section": "step two example",
+          "page_start": 13,
+          "page_end": 13,
+          "effective_date": "January 2021"
+        }
+      ]
+    }
+  },
+  {
+    "email": {
+      "id": 2,
+      "subject": "Orthodontist coverage for my daughter",
+      "from": "r.chen@company.com",
+      "body": "My daughter needs braces and her orthodontist isn't in our dental network. What's the lifetime maximum the plan will pay for orthodontic care if we go out-of-network vs. staying in-network? Trying to figure out how much we'll be on the hook for.",
+      "expect": {
+        "clear_answer": true,
+        "docs": [
+          "DentalPPO"
+        ],
+        "must_mention": [
+          "$2,000",
+          "$1,000"
+        ],
+        "notes": "Conflict trap: current (2022) ortho lifetime max = $2,000 network / $1,000 out-of-network. Older 2017 sections say $1,500 network. Must use the most recent via effective_date."
+      }
+    },
+    "result": {
+      "question": "Subject: Orthodontist coverage for my daughter\n\nMy daughter needs braces and her orthodontist isn't in our dental network. What's the lifetime maximum the plan will pay for orthodontic care if we go out-of-network vs. staying in-network? Trying to figure out how much we'll be on the hook for.",
+      "answer": "Hi there,\n\nYour plan's orthodontic lifetime maximums depend on which providers you choose. Here's the breakdown under the current plan (effective January 1, 2022):\n\n**Network (in-network orthodontist):** The plan will pay up to $2,000 in lifetime benefits, covering 50 percent of contracted fees.\n\n**Out-of-network:** The plan will pay up to $1,000 in lifetime benefits, covering 50 percent of Delta Dental's allowance.\n\nOne important thing to note: The two pools are combined. Any benefits you receive from out-of-network care count toward your out-of-network maximum, but they also count toward your total network maximum. For example, if your daughter receives $500 in out-of-network orthodontic benefits, she could still qualify for up to $1,500 more from the network coverage (not the full $2,000), bringing the total plan payment to $2,000.\n\nSince your daughter's orthodontist is out-of-network, it's a good idea to ask the orthodontist to request a predetermination of benefits from Delta Dental before treatment starts. That way you'll know exactly what your out-of-pocket costs will be.\n\nBest regards,\nBenefits Team",
+      "citations": [
+        {
+          "doc": "DentalPPO",
+          "section": "orthodontic care lifetime maximum",
+          "page": 4,
+          "quote": "Effective January 1, 2022 the orthodontic care lifetime maximum is as follows: \u2022 Network coverage: There is a lifetime benefit maximum of $2,000 per plan member. \u2022 Out-of-network coverage: There is a lifetime benefit maximum of $1,000 per plan member."
+        },
+        {
+          "doc": "DentalPPO",
+          "section": "Orthodontic Care",
+          "page": 46,
+          "quote": "Network coverage: Pays 50 percent of the contracted fees for braces and other teeth-straightening services and appliances... There is a lifetime benefit maximum of $1,500 per plan member. \u2022 Out-of-network coverage: Pays 50 percent of Delta Dentals allowance for braces and other teeth-straightening services and appliances... There is a lifetime benefit maximum of $1,000 per plan member."
+        },
+        {
+          "doc": "DentalPPO",
+          "section": "Orthodontic Care",
+          "page": 46,
+          "quote": "Any network orthodontia benefits you use count toward your maximum out-of-network orthodontia benefits. Similarly, any out-of-network orthodontia benefits you use count toward your maximum network orthodontia benefits."
+        }
+      ],
+      "has_clear_answer": true,
+      "retrieval": [
+        {
+          "id": "DentalPPO::64",
+          "score": 0.6817125678062439,
+          "doc": "DentalPPO",
+          "section": "Orthodontic Care",
+          "page_start": 46,
+          "page_end": 46,
+          "effective_date": "January 2017"
+        },
+        {
+          "id": "DentalPPO::3",
+          "score": 0.610347330570221,
+          "doc": "DentalPPO",
+          "section": "orthodontic care lifetime maximum",
+          "page_start": 4,
+          "page_end": 4,
+          "effective_date": "January 2022"
+        },
+        {
+          "id": "DentalPPO::58",
+          "score": 0.5986499786376953,
+          "doc": "DentalPPO",
+          "section": "benefit maximums",
+          "page_start": 42,
+          "page_end": 42,
+          "effective_date": "January 2017"
+        },
+        {
+          "id": "DentalPPO::57",
+          "score": 0.5548082590103149,
+          "doc": "DentalPPO",
+          "section": "deductibles",
+          "page_start": 41,
+          "page_end": 41,
+          "effective_date": "January 2017"
+        },
+        {
+          "id": "DentalPPO::34",
+          "score": 0.5404267907142639,
+          "doc": "DentalPPO",
+          "section": "overview",
+          "page_start": 20,
+          "page_end": 20,
+          "effective_date": "January 2017"
+        },
+        {
+          "id": "DentalPPO::56",
+          "score": 0.5359988212585449,
+          "doc": "DentalPPO",
+          "section": "how the plan works",
+          "page_start": 40,
+          "page_end": 40,
+          "effective_date": "January 2017"
+        },
+        {
+          "id": "DentalPPO::63",
+          "score": 0.5152636766433716,
+          "doc": "DentalPPO",
+          "section": "Major Dental Care",
+          "page_start": 45,
+          "page_end": 45,
+          "effective_date": "January 2017"
+        },
+        {
+          "id": "DentalPPO::33",
+          "score": 0.5147994756698608,
+          "doc": "DentalPPO",
+          "section": "overview",
+          "page_start": 20,
+          "page_end": 20,
+          "effective_date": null
+        },
+        {
+          "id": "MedicalPPOUHC::175",
+          "score": 0.4878661334514618,
+          "doc": "MedicalPPOUHC",
+          "section": "Therapy Treatments",
+          "page_start": 117,
+          "page_end": 118,
+          "effective_date": "January 2014"
+        },
+        {
+          "id": "DentalPPO::5",
+          "score": 0.48302140831947327,
+          "doc": "DentalPPO",
+          "section": "major dental care coinsurance",
+          "page_start": 5,
+          "page_end": 5,
+          "effective_date": "January 2022"
+        },
+        {
+          "id": "DentalPPO::61",
+          "score": 0.48059871792793274,
+          "doc": "DentalPPO",
+          "section": "Basic Dental Care",
+          "page_start": 44,
+          "page_end": 45,
+          "effective_date": "January 2017"
+        },
+        {
+          "id": "DentalPPO::60",
+          "score": 0.4798179566860199,
+          "doc": "DentalPPO",
+          "section": "Diagnostic and Preventive Care",
+          "page_start": 43,
+          "page_end": 44,
+          "effective_date": "January 2017"
+        },
+        {
+          "id": "DentalPPO::21",
+          "score": 0.47569820284843445,
+          "doc": "DentalPPO",
+          "section": "dental plan updates dental PPO coinsurance update",
+          "page_start": 14,
+          "page_end": 14,
+          "effective_date": null
+        },
+        {
+          "id": "MedicalPPOUHC::160",
+          "score": 0.46533477306365967,
+          "doc": "MedicalPPOUHC",
+          "section": "what the plan pays",
+          "page_start": 96,
+          "page_end": 97,
+          "effective_date": "January 2014"
+        },
+        {
+          "id": "MedicalPPOUHC::152",
+          "score": 0.46522048115730286,
+          "doc": "MedicalPPOUHC",
+          "section": "medical out-of-pocket maximum feature",
+          "page_start": 90,
+          "page_end": 91,
+          "effective_date": "January 2014"
+        }
+      ]
+    }
+  },
+  {
+    "email": {
+      "id": 3,
+      "subject": "Travel costs for a specialist out of state",
+      "from": "dpatel@company.com",
+      "body": "My doctor is referring me to a specialist for a procedure that isn't available anywhere near me. Does our medical plan cover any of the travel or hotel costs to go get this done out of state? Not sure if this is something the plan even considers.",
+      "expect": {
+        "clear_answer": true,
+        "docs": [
+          "MedicalPPOUHC"
+        ],
+        "must_mention": [
+          "travel",
+          "100 miles"
+        ],
+        "notes": "Answerable: Medical PPO has a travel-expense reimbursement provision (not reasonably available within 100 miles, service must be covered, caregiver may be included)."
+      }
+    },
+    "result": {
+      "question": "Subject: Travel costs for a specialist out of state\n\nMy doctor is referring me to a specialist for a procedure that isn't available anywhere near me. Does our medical plan cover any of the travel or hotel costs to go get this done out of state? Not sure if this is something the plan even considers.",
+      "answer": "Hi there,\n\nGood news \u2013 yes, your Chevron Medical PPO Plan does cover travel and lodging costs for out-of-state specialist care. \"This plan provision reimburses you for charges incurred for reasonable, qualifying travel expenses that are essential to receive any covered medical service under the Chevron Medical PPO Plan.\"\n\nYour situation appears to qualify. The benefit applies when \"the covered service is not reasonably available to you from a network provider or facility within 100 miles of your home residence\" \u2013 which matches your scenario if the procedure truly isn't available nearby.\n\nQualifying reimbursable expenses include:\n- Mileage for your personal car\n- Rental cars\n- Airline or train tickets\n- Hotel lodging (subject to IRS per diem limits)\n- Parking fees, tolls, and ride-share services\n\nImportant points: The travel benefit does not count toward your deductible, and the specialist's procedure itself will continue to be covered under the plan's normal medical benefits. Meals and personal items are not covered. You'll need to file a travel claim with documentation no later than six months after the year in which the service is provided.\n\nI'd recommend contacting the plan administrator before your trip to confirm the procedure is a covered medical service and to understand any specific requirements or preauthorization needs.\n\nBest regards,\nBenefits Team",
+      "citations": [
+        {
+          "doc": "MedicalPPOUHC",
+          "section": "how it works",
+          "page": 4,
+          "quote": "This plan provision reimburses you for charges incurred for reasonable, qualifying travel expenses that are essential to receive any covered medical service under the Chevron Medical PPO Plan."
+        },
+        {
+          "doc": "MedicalPPOUHC",
+          "section": "how it works",
+          "page": 4,
+          "quote": "The covered service is not reasonably available to you from a network provider or facility within 100 miles of your home residence."
+        },
+        {
+          "doc": "MedicalPPOUHC",
+          "section": "qualifying travel expenses",
+          "page": 6,
+          "quote": "General examples of qualifying travel expenses include but are not limited to: Mileage in your personal car to/from your home to the covered service provider or facility, Lodging not provided by a hospital or other institution for the patient and caregiver, subject to IRS per diem limits, Rental cars, Train or airline travel tickets, Bus, shuttle, taxi and ride share services, Long-term airport parking or other parking fees"
+        },
+        {
+          "doc": "MedicalPPOUHC",
+          "section": "how it works",
+          "page": 5,
+          "quote": "Reimbursement is not subject to the annual deductible. While benefits for the covered medical service will continue to follow the Medical PPO Plan's normal deductible, coinsurance and copayment schedule, there is no separate deductible, coinsurance or copayment requirement for reimbursement of qualifying travel expenses."
+        }
+      ],
+      "has_clear_answer": true,
+      "retrieval": [
+        {
+          "id": "MedicalPPOUHC::4",
+          "score": 0.5464552640914917,
+          "doc": "MedicalPPOUHC",
+          "section": "how it works",
+          "page_start": 4,
+          "page_end": 5,
+          "effective_date": null
+        },
+        {
+          "id": "MedicalPPOUHC::5",
+          "score": 0.51630699634552,
+          "doc": "MedicalPPOUHC",
+          "section": "how it works",
+          "page_start": 5,
+          "page_end": 5,
+          "effective_date": null
+        },
+        {
+          "id": "MedicalPPOUHC::6",
+          "score": 0.5041162371635437,
+          "doc": "MedicalPPOUHC",
+          "section": "qualifying travel expenses",
+          "page_start": 6,
+          "page_end": 6,
+          "effective_date": null
+        },
+        {
+          "id": "MedicalPPOUHC::169",
+          "score": 0.48740682005882263,
+          "doc": "MedicalPPOUHC",
+          "section": "what the plan pays",
+          "page_start": 109,
+          "page_end": 111,
+          "effective_date": "January 2014"
+        },
+        {
+          "id": "MedicalPPOUHC::168",
+          "score": 0.4730369746685028,
+          "doc": "MedicalPPOUHC",
+          "section": "what the plan pays",
+          "page_start": 108,
+          "page_end": 109,
+          "effective_date": "January 2014"
+        },
+        {
+          "id": "MedicalPPOUHC::8",
+          "score": 0.4626825749874115,
+          "doc": "MedicalPPOUHC",
+          "section": "how to use the travel benefit",
+          "page_start": 7,
+          "page_end": 8,
+          "effective_date": null
+        },
+        {
+          "id": "MedicalPPOUHC::7",
+          "score": 0.45518484711647034,
+          "doc": "MedicalPPOUHC",
+          "section": "reimbursement limits",
+          "page_start": 6,
+          "page_end": 6,
+          "effective_date": null
+        },
+        {
+          "id": "MedicalPPOUHC::183",
+          "score": 0.4498293399810791,
+          "doc": "MedicalPPOUHC",
+          "section": "expenses that aren\u2019t covered under the plan",
+          "page_start": 123,
+          "page_end": 124,
+          "effective_date": "January 2014"
+        },
+        {
+          "id": "MedicalPPOUHC::158",
+          "score": 0.4475266635417938,
+          "doc": "MedicalPPOUHC",
+          "section": "what the plan pays",
+          "page_start": 94,
+          "page_end": 95,
+          "effective_date": "January 2014"
+        },
+        {
+          "id": "MedicalPPOUHC::167",
+          "score": 0.44434306025505066,
+          "doc": "MedicalPPOUHC",
+          "section": "what the plan pays",
+          "page_start": 106,
+          "page_end": 108,
+          "effective_date": "January 2014"
+        },
+        {
+          "id": "MedicalPPOUHC::356",
+          "score": 0.4433068335056305,
+          "doc": "MedicalPPOUHC",
+          "section": "Covered Charges",
+          "page_start": 223,
+          "page_end": 223,
+          "effective_date": null
+        },
+        {
+          "id": "MedicalPPOUHC::184",
+          "score": 0.4428703784942627,
+          "doc": "MedicalPPOUHC",
+          "section": "expenses that aren\u2019t covered under the plan",
+          "page_start": 124,
+          "page_end": 125,
+          "effective_date": "January 2014"
+        },
+        {
+          "id": "MedicalPPOUHC::187",
+          "score": 0.44137096405029297,
+          "doc": "MedicalPPOUHC",
+          "section": "expenses that aren\u2019t covered under the plan",
+          "page_start": 127,
+          "page_end": 128,
+          "effective_date": "January 2014"
+        },
+        {
+          "id": "MedicalPPOUHC::3",
+          "score": 0.43650296330451965,
+          "doc": "MedicalPPOUHC",
+          "section": "overview",
+          "page_start": 4,
+          "page_end": 4,
+          "effective_date": "August 2022"
+        },
+        {
+          "id": "MedicalPPOUHC::162",
+          "score": 0.4327801465988159,
+          "doc": "MedicalPPOUHC",
+          "section": "what the plan pays",
+          "page_start": 99,
+          "page_end": 101,
+          "effective_date": "January 2014"
+        }
+      ]
+    }
+  },
+  {
+    "email": {
+      "id": 4,
+      "subject": "Did my critical illness coverage change?",
+      "from": "k.oconnor@company.com",
+      "body": "I got a notice that said something about a new administrator for my hospital indemnity and critical illness coverage. Do I need to do anything to keep my current coverage, or does it just carry over automatically? Wasn't sure if this required action on my end.",
+      "expect": {
+        "clear_answer": null,
+        "docs": [
+          "CriticalIllness",
+          "HospitalIndemnity"
+        ],
+        "must_mention": [],
+        "notes": "Spans two docs. Judgment case: if the docs state coverage carries over with no action, answer that; if they don't state an action requirement, flag the uncertainty rather than guessing."
+      }
+    },
+    "result": {
+      "question": "Subject: Did my critical illness coverage change?\n\nI got a notice that said something about a new administrator for my hospital indemnity and critical illness coverage. Do I need to do anything to keep my current coverage, or does it just carry over automatically? Wasn't sure if this required action on my end.",
+      "answer": "Hi there,\n\nGood news\u2014your coverage will carry over automatically. Since you are currently enrolled, your Critical Illness and Hospital Indemnity coverage will automatically continue in 2026 with the new administrator, Securian, unless you decide to make changes. Your coverage has already been automatically assigned to the closest available option with Securian.\n\nWhile no action is required if you're satisfied with your coverage, we do encourage you to verify your coverage details on BenefitConnect during open enrollment (October 20\u201331, 2025) and make any additional adjustments if needed. Any changes you make during that window will take effect January 1, 2026.\n\nBest regards,\nBenefits Team",
+      "citations": [
+        {
+          "doc": "CriticalIllness",
+          "section": "what happens to your current coverage",
+          "page": 4,
+          "quote": "If you are currently enrolled, your Critical Illness and/or Hospital Indemnity election will automatically continue in 2026 unless you decide to make changes during open enrollment, October 20 through October 31, 2025."
+        },
+        {
+          "doc": "CriticalIllness",
+          "section": "what happens to your current coverage",
+          "page": 4,
+          "quote": "Your coverage has been automatically assigned to the closest possible coverage option and level available with Securian."
+        },
+        {
+          "doc": "CriticalIllness",
+          "section": "what happens to your current coverage",
+          "page": 4,
+          "quote": "If you are satisfied with your coverage, no additional action is required."
+        }
+      ],
+      "has_clear_answer": true,
+      "retrieval": [
+        {
+          "id": "CriticalIllness::5",
+          "score": 0.5077119469642639,
+          "doc": "CriticalIllness",
+          "section": "what happens to your current coverage",
+          "page_start": 4,
+          "page_end": 4,
+          "effective_date": null
+        },
+        {
+          "id": "HospitalIndemnity::5",
+          "score": 0.5036309957504272,
+          "doc": "HospitalIndemnity",
+          "section": "what happens to your current coverage",
+          "page_start": 4,
+          "page_end": 4,
+          "effective_date": null
+        },
+        {
+          "id": "MedicalPPOUHC::42",
+          "score": 0.4444466233253479,
+          "doc": "MedicalPPOUHC",
+          "section": "Total Health Total You Program",
+          "page_start": 26,
+          "page_end": 26,
+          "effective_date": "January 2021"
+        },
+        {
+          "id": "HospitalIndemnity::22",
+          "score": 0.43768325448036194,
+          "doc": "HospitalIndemnity",
+          "section": "Overview",
+          "page_start": 14,
+          "page_end": 14,
+          "effective_date": "January 2017"
+        },
+        {
+          "id": "DentalPPO::15",
+          "score": 0.4334590435028076,
+          "doc": "DentalPPO",
+          "section": "employee after-tax contributions eliminated",
+          "page_start": 10,
+          "page_end": 10,
+          "effective_date": "January 2019"
+        },
+        {
+          "id": "VisionBasic::12",
+          "score": 0.42855018377304077,
+          "doc": "VisionBasic",
+          "section": "employee after-tax contributions eliminated",
+          "page_start": 9,
+          "page_end": 9,
+          "effective_date": "January 2019"
+        },
+        {
+          "id": "HospitalIndemnity::4",
+          "score": 0.42780613899230957,
+          "doc": "HospitalIndemnity",
+          "section": "what is changing",
+          "page_start": 4,
+          "page_end": 4,
+          "effective_date": "January 2026"
+        },
+        {
+          "id": "MedicalPPOUHC::95",
+          "score": 0.4275650680065155,
+          "doc": "MedicalPPOUHC",
+          "section": "employee after-tax contributions eliminated",
+          "page_start": 47,
+          "page_end": 47,
+          "effective_date": "January 2019"
+        },
+        {
+          "id": "CriticalIllness::4",
+          "score": 0.42305949330329895,
+          "doc": "CriticalIllness",
+          "section": "what is changing",
+          "page_start": 4,
+          "page_end": 4,
+          "effective_date": "January 2026"
+        },
+        {
+          "id": "HospitalIndemnity::3",
+          "score": 0.4133896231651306,
+          "doc": "HospitalIndemnity",
+          "section": "new claims administrator and insurer",
+          "page_start": 4,
+          "page_end": 4,
+          "effective_date": null
+        },
+        {
+          "id": "HospitalIndemnity::2",
+          "score": 0.41236066818237305,
+          "doc": "HospitalIndemnity",
+          "section": "new claims administrator and insurer group critical illness insurance group hospital indemnity insurance effective january 1, 2026",
+          "page_start": 4,
+          "page_end": 4,
+          "effective_date": "January 2026"
+        },
+        {
+          "id": "CriticalIllness::3",
+          "score": 0.4109095633029938,
+          "doc": "CriticalIllness",
+          "section": "new claims administrator and insurer",
+          "page_start": 4,
+          "page_end": 4,
+          "effective_date": null
+        },
+        {
+          "id": "CriticalIllness::35",
+          "score": 0.4089828133583069,
+          "doc": "CriticalIllness",
+          "section": "Making Changes",
+          "page_start": 21,
+          "page_end": 21,
+          "effective_date": "January 2017"
+        },
+        {
+          "id": "CriticalIllness::2",
+          "score": 0.4060368835926056,
+          "doc": "CriticalIllness",
+          "section": "new claims administrator and insurer group critical illness insurance group hospital indemnity insurance effective january 1, 2026",
+          "page_start": 4,
+          "page_end": 4,
+          "effective_date": "January 2026"
+        },
+        {
+          "id": "HospitalIndemnity::30",
+          "score": 0.4054129123687744,
+          "doc": "HospitalIndemnity",
+          "section": "What Is a Qualifying Life Event",
+          "page_start": 19,
+          "page_end": 19,
+          "effective_date": "January 2017"
+        }
+      ]
+    }
+  },
+  {
+    "email": {
+      "id": 5,
+      "subject": "Enrolling in long-term care insurance",
+      "from": "swilliams@company.com",
+      "body": "I've been meaning to sign up for the long-term care insurance plan for a couple years and never got around to it. I want to enroll now \u2014 can you send me the enrollment steps? Want to make sure I'm getting the same plan my manager has, since she signed up a while back.",
+      "expect": {
+        "clear_answer": null,
+        "docs": [
+          "LongTermCare"
+        ],
+        "must_mention": [],
+        "notes": "Two-part: enrollment steps may be answerable from LongTermCare.pdf, BUT 'the same plan my manager has' is an unknowable personal fact -> must flag that part and not guess. Watch enrollment eligibility windows too."
+      }
+    },
+    "result": {
+      "question": "Subject: Enrolling in long-term care insurance\n\nI've been meaning to sign up for the long-term care insurance plan for a couple years and never got around to it. I want to enroll now \u2014 can you send me the enrollment steps? Want to make sure I'm getting the same plan my manager has, since she signed up a while back.",
+      "answer": "Hi there,\n\nI'm glad you're ready to enroll in the Long-Term Care Insurance Plan. Here are the enrollment steps:\n\n**Enrollment options:**\n- Apply online at **genworth.com/chevron** (available anytime)\n- Call **Genworth at 1-800-416-3624**\n- Visit **hr2.chevron.com/OpenEnrollment** for additional resources\n\n[Source 4] notes that \"you must submit an enrollment application\" and provides these resources to \"apply for this coverage, learn more about the program, and get a rate quote.\" Once approved, [Source 4] states that \"you will receive a Certificate of Coverage from Genworth within 30 days after you are approved for enrollment in the New LTC plan.\"\n\n**Important note:** The sources don't specify what plan your manager enrolled in or whether the same plan options are still available now. I'd recommend contacting Genworth or the HR Service Center (1-888-825-5247) to confirm your eligibility and review current plan options before enrolling.\n\nBest regards,\nBenefits Team",
+      "citations": [
+        {
+          "doc": "LongTermCare",
+          "section": "how to enroll",
+          "page": 8,
+          "quote": "you must submit an enrollment application. You can apply for this coverage at any time on or after October 14, 2019. To learn more about the program, get a rate quote and enroll, use the following resources: \u2022 Apply anytime on or after October 26, 2019: genworth.com/chevron \u2022 Call Genworth at 1-800-416-3624 starting October 14, 2019."
+        },
+        {
+          "doc": "LongTermCare",
+          "section": "how to enroll",
+          "page": 8,
+          "quote": "You will receive a Certificate of Coverage from Genworth within 30 days after you are approved for enrollment in the New LTC plan."
+        }
+      ],
+      "has_clear_answer": true,
+      "retrieval": [
+        {
+          "id": "LongTermCare::5",
+          "score": 0.4960046112537384,
+          "doc": "LongTermCare",
+          "section": "services covered",
+          "page_start": 5,
+          "page_end": 5,
+          "effective_date": null
+        },
+        {
+          "id": "LongTermCare::0",
+          "score": 0.4745691120624542,
+          "doc": "LongTermCare",
+          "section": "long-term care insurance plan summary plan description effective january 1, 2018",
+          "page_start": 1,
+          "page_end": 2,
+          "effective_date": null
+        },
+        {
+          "id": "LongTermCare::67",
+          "score": 0.4552452862262726,
+          "doc": "LongTermCare",
+          "section": "how to file a claim for eligibility",
+          "page_start": 29,
+          "page_end": 29,
+          "effective_date": "January 2018"
+        },
+        {
+          "id": "LongTermCare::10",
+          "score": 0.4544186294078827,
+          "doc": "LongTermCare",
+          "section": "how to enroll",
+          "page_start": 8,
+          "page_end": 8,
+          "effective_date": null
+        },
+        {
+          "id": "LongTermCare::21",
+          "score": 0.4541107416152954,
+          "doc": "LongTermCare",
+          "section": "Eligible Employees",
+          "page_start": 15,
+          "page_end": 16,
+          "effective_date": "January 2018"
+        },
+        {
+          "id": "LongTermCare::68",
+          "score": 0.44523319602012634,
+          "doc": "LongTermCare",
+          "section": "Appeals Procedures for Denied Claims",
+          "page_start": 30,
+          "page_end": 30,
+          "effective_date": "January 2018"
+        },
+        {
+          "id": "CriticalIllness::13",
+          "score": 0.4338248372077942,
+          "doc": "CriticalIllness",
+          "section": "how to enroll",
+          "page_start": 8,
+          "page_end": 8,
+          "effective_date": null
+        },
+        {
+          "id": "LongTermCare::27",
+          "score": 0.4309813380241394,
+          "doc": "LongTermCare",
+          "section": "When Participation Begins",
+          "page_start": 18,
+          "page_end": 18,
+          "effective_date": "January 2018"
+        },
+        {
+          "id": "LongTermCare::3",
+          "score": 0.4304017126560211,
+          "doc": "LongTermCare",
+          "section": "new LTC plan effective january 1, 2020",
+          "page_start": 4,
+          "page_end": 4,
+          "effective_date": null
+        },
+        {
+          "id": "LongTermCare::19",
+          "score": 0.4285190999507904,
+          "doc": "LongTermCare",
+          "section": "overview",
+          "page_start": 14,
+          "page_end": 14,
+          "effective_date": "January 2018"
+        },
+        {
+          "id": "LongTermCare::12",
+          "score": 0.4254937469959259,
+          "doc": "LongTermCare",
+          "section": "current LTC plan closed to new entrants after october 13, 2019",
+          "page_start": 9,
+          "page_end": 9,
+          "effective_date": "January 2020"
+        },
+        {
+          "id": "LongTermCare::2",
+          "score": 0.4242651164531708,
+          "doc": "LongTermCare",
+          "section": "new long term care plan effective january 1, 2020",
+          "page_start": 4,
+          "page_end": 4,
+          "effective_date": "January 2020"
+        },
+        {
+          "id": "LongTermCare::11",
+          "score": 0.4242651164531708,
+          "doc": "LongTermCare",
+          "section": "long term care insurance effective january 1, 2020",
+          "page_start": 9,
+          "page_end": 9,
+          "effective_date": "January 2020"
+        },
+        {
+          "id": "HospitalIndemnity::28",
+          "score": 0.4190402925014496,
+          "doc": "HospitalIndemnity",
+          "section": "Participation When and How You Can Enroll",
+          "page_start": 19,
+          "page_end": 19,
+          "effective_date": null
+        },
+        {
+          "id": "MedicalPPOUHC::133",
+          "score": 0.4182623624801636,
+          "doc": "MedicalPPOUHC",
+          "section": "A Snapshot of What to Do When",
+          "page_start": 74,
+          "page_end": 74,
+          "effective_date": "January 2014"
+        }
+      ]
+    }
+  }
+]
