@@ -64,27 +64,22 @@ def _index():
 
 
 def _to_hits(response) -> list[Hit]:
-    # SearchRecordsResponse -> response.result.hits, each with _id/_score/fields
-    raw = response.get("result", {}).get("hits", []) if hasattr(response, "get") else []
-    if not raw:
-        # some SDK builds expose attribute access
-        result = getattr(response, "result", None)
-        raw = getattr(result, "hits", []) if result is not None else []
+    # SearchRecordsResponse -> response.result.hits; each Hit exposes .id/.score/.fields
+    result = getattr(response, "result", None)
+    raw = getattr(result, "hits", None) or []
     hits: list[Hit] = []
     for h in raw:
-        get = h.get if hasattr(h, "get") else (lambda k, d=None: getattr(h, k, d))
-        fields = get("fields", {}) or {}
-        fget = fields.get if hasattr(fields, "get") else (lambda k, d=None: getattr(fields, k, d))
+        f = getattr(h, "fields", None) or {}
         hits.append(
             Hit(
-                id=get("_id", ""),
-                score=float(get("_score", 0.0) or 0.0),
-                text=fget("text", "") or "",
-                doc=fget("doc", "") or "",
-                section=fget("section", "") or "",
-                page_start=int(fget("page_start", 0) or 0),
-                page_end=int(fget("page_end", 0) or 0),
-                effective_date=fget("effective_date", None),
+                id=getattr(h, "id", "") or "",
+                score=float(getattr(h, "score", 0.0) or 0.0),
+                text=f.get("text", "") or "",
+                doc=f.get("doc", "") or "",
+                section=f.get("section", "") or "",
+                page_start=int(f.get("page_start", 0) or 0),
+                page_end=int(f.get("page_end", 0) or 0),
+                effective_date=f.get("effective_date"),
             )
         )
     return hits

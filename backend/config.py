@@ -11,8 +11,8 @@ load_dotenv(BACKEND_DIR / ".env")
 
 # --- Pinecone (integrated embedding index) ---
 PINECONE_API_KEY = os.getenv("PINECONE_API_KEY", "")
-PINECONE_INDEX = os.getenv("PINECONE_INDEX", "benefits-rag")
-PINECONE_NAMESPACE = os.getenv("PINECONE_NAMESPACE", "default")
+PINECONE_INDEX = os.getenv("PINECONE_INDEX", "sigflow-index")
+PINECONE_NAMESPACE = os.getenv("PINECONE_NAMESPACE", "__default__")
 
 # --- Generation (Claude) ---
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
