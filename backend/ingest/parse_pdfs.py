@@ -1,4 +1,5 @@
-"""Parse benefit plan PDFs into structured lines with heading + page metadata.
+"""
+Parse benefit plan PDFs into structured lines with heading + page metadata.
 
 All 8 provided PDFs have a real text layer (verified), so no OCR is needed. Section
 headings are detected by font size: body text is 8-10pt, headings are 12pt+. We also

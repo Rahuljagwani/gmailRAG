@@ -1,10 +1,8 @@
-"""Retrieval layer (rung 1: dense-only).
+"""
+Retrieval layer.
 
 Queries the Pinecone integrated-embedding index with raw text; Pinecone embeds the
-query server-side and returns the nearest chunk records with their metadata. The
-retrieval strategy is intentionally kept behind this one module so climbing the
-upgrade ladder (rung 2 rerank, rung 3 hybrid) is a change here only -- the answer
-layer and API contract never change. See PLAN.md §3 and DECISIONS.md §9.
+query server-side and returns the nearest chunk records with their metadata.
 
 Usage:
     from rag.retrieve import retrieve

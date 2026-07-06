@@ -1,4 +1,5 @@
-"""Chunk parsed docs into retrieval units carrying section + page + effective-date metadata.
+"""
+Chunk parsed docs into retrieval units carrying section + page + effective-date metadata.
 
 Strategy: start a new chunk at each section heading (font-size detected). Merge consecutive
 heading lines into one section title. Split overly long sections into sub-chunks with small
@@ -10,7 +11,6 @@ from __future__ import annotations
 
 import glob
 import json
-import os
 from dataclasses import asdict, dataclass
 from pathlib import Path
 

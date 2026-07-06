@@ -1,9 +1,10 @@
-"""Orchestration: question -> retrieve -> generate -> structured AnswerResult.
+"""
+Orchestration: question -> retrieve -> generate -> structured AnswerResult.
 
-This is the single entry point the API (Commit 6) and the CLI/eval call. Retrieval
+This is the single entry point the API and the CLI/eval call. Retrieval
 strategy and generation are kept behind retrieve()/generate() so this layer stays
 stable as we climb the retrieval ladder. It also attaches a lightweight retrieval
-trace so the eval (Commit 5) can inspect what was fed to the model.
+trace so the eval can inspect what was fed to the model.
 """
 from __future__ import annotations
 
@@ -70,8 +71,8 @@ def answer_question(
     result = generate(question, used)
     return AnswerResult(
         question=question,
-        answer=result.get("answer", ""),
-        citations=[Citation(**c) for c in result.get("citations", [])],
-        has_clear_answer=bool(result.get("has_clear_answer", False)),
+        answer=result.get("answer") or "",
+        citations=[Citation(**c) for c in (result.get("citations") or [])],
+        has_clear_answer=bool(result.get("has_clear_answer")),
         retrieval=_trace(hits),
     )

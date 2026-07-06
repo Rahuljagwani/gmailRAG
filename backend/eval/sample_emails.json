@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "subject": "FSA contribution question",
+    "from": "jmartinez@company.com",
+    "body": "Hi, I'm setting up my elections for next year and I thought the max I could put into my Health FSA was $3,200. A coworker mentioned it went up. Can you confirm what the actual limit is for 2026, and whether there's a minimum I have to contribute too?",
+    "expect": {
+      "clear_answer": true,
+      "docs": ["HCSA"],
+      "must_mention": ["$3,300", "$120"],
+      "notes": "2026 Health FSA max = $3,300 (up from $3,200); minimum = $120. Straightforward lookup."
+    }
+  },
+  {
+    "id": 2,
+    "subject": "Orthodontist coverage for my daughter",
+    "from": "r.chen@company.com",
+    "body": "My daughter needs braces and her orthodontist isn't in our dental network. What's the lifetime maximum the plan will pay for orthodontic care if we go out-of-network vs. staying in-network? Trying to figure out how much we'll be on the hook for.",
+    "expect": {
+      "clear_answer": true,
+      "docs": ["DentalPPO"],
+      "must_mention": ["$2,000", "$1,000"],
+      "notes": "Conflict trap: current (2022) ortho lifetime max = $2,000 network / $1,000 out-of-network. Older 2017 sections say $1,500 network. Must use the most recent via effective_date."
+    }
+  },
+  {
+    "id": 3,
+    "subject": "Travel costs for a specialist out of state",
+    "from": "dpatel@company.com",
+    "body": "My doctor is referring me to a specialist for a procedure that isn't available anywhere near me. Does our medical plan cover any of the travel or hotel costs to go get this done out of state? Not sure if this is something the plan even considers.",
+    "expect": {
+      "clear_answer": true,
+      "docs": ["MedicalPPOUHC"],
+      "must_mention": ["travel", "100 miles"],
+      "notes": "Answerable: Medical PPO has a travel-expense reimbursement provision (not reasonably available within 100 miles, service must be covered, caregiver may be included)."
+    }
+  },
+  {
+    "id": 4,
+    "subject": "Did my critical illness coverage change?",
+    "from": "k.oconnor@company.com",
+    "body": "I got a notice that said something about a new administrator for my hospital indemnity and critical illness coverage. Do I need to do anything to keep my current coverage, or does it just carry over automatically? Wasn't sure if this required action on my end.",
+    "expect": {
+      "clear_answer": null,
+      "docs": ["CriticalIllness", "HospitalIndemnity"],
+      "must_mention": [],
+      "notes": "Spans two docs. Judgment case: if the docs state coverage carries over with no action, answer that; if they don't state an action requirement, flag the uncertainty rather than guessing."
+    }
+  },
+  {
+    "id": 5,
+    "subject": "Enrolling in long-term care insurance",
+    "from": "swilliams@company.com",
+    "body": "I've been meaning to sign up for the long-term care insurance plan for a couple years and never got around to it. I want to enroll now — can you send me the enrollment steps? Want to make sure I'm getting the same plan my manager has, since she signed up a while back.",
+    "expect": {
+      "clear_answer": null,
+      "docs": ["LongTermCare"],
+      "must_mention": [],
+      "notes": "Two-part: enrollment steps may be answerable from LongTermCare.pdf, BUT 'the same plan my manager has' is an unknowable personal fact -> must flag that part and not guess. Watch enrollment eligibility windows too."
+    }
+  }
+]

@@ -1,4 +1,5 @@
-"""Generation layer: turn retrieved chunks into a grounded, structured answer.
+"""
+Generation layer: turn retrieved chunks into a grounded, structured answer.
 
 Uses Claude with a strict grounding prompt. Structured output is obtained via a
 forced tool call (Sonnet 4.6 does not support assistant prefill), so the model must
@@ -29,17 +30,32 @@ provided in the user message -- these are passages retrieved from the official p
 documents. Never use outside knowledge or assumptions.
 
 Rules:
-1. Ground every factual claim in the sources. For each claim, cite the source it came \
-from (document, section, page) and include a short verbatim quote.
-2. If the sources do not clearly answer the question, set has_clear_answer to false and \
-briefly explain what information is missing. Do NOT guess or fabricate.
-3. Some questions cannot be answered from plan documents at all (e.g. personal facts \
-like "the same plan my manager has", or costs not covered by the plans). For those, set \
-has_clear_answer to false and say the documents don't cover it.
-4. If the same figure appears under different effective dates, use the MOST RECENT \
+1. Ground every factual claim in the sources. For EACH claim in your answer, add a \
+citation (document, section, page) with a short verbatim quote. If your answer contains \
+any claim drawn from the sources, the citations array MUST NOT be empty.
+2. Set has_clear_answer=true when the sources let you substantively answer the main \
+question. In that case you MUST provide citations. Set has_clear_answer=false ONLY when \
+the sources do not let you answer the main question; then keep the answer to a brief \
+explanation of what is missing and do NOT write a detailed grounded answer.
+3. Consistency: never return a detailed, source-backed answer while has_clear_answer is \
+false, and never return has_clear_answer=true with an empty citations array. These must \
+agree.
+4. Multi-part questions: if some parts are answerable from the sources and some are not \
+(e.g. a personal fact like "the same plan my manager has"), set has_clear_answer=true, \
+answer the supported parts with citations, and clearly flag the unsupported part as \
+something the documents don't cover. Never guess or fabricate the unsupported part.
+5. CONDITIONAL COVERAGE IS STILL A CLEAR ANSWER. If the sources contain a provision that \
+addresses the question, describing that provision counts as answering it -- even if the \
+outcome depends on conditions (e.g. "reimbursed only if the service isn't available within \
+100 miles"). In that case set has_clear_answer=true, state the conditions plainly, and cite \
+them. Do not treat "it depends" or the sender's own uncertainty as a reason to set false.
+6. If the same figure appears under different effective dates, use the MOST RECENT \
 effective date and mention that an older value existed. Never average or mix them.
-5. Write the answer in a warm, clear, professional tone suitable for pasting into an \
-email reply. Be concise; do not invent greetings or signatures."""
+7. Write the answer in a warm, clear, professional tone suitable for pasting into an \
+email reply. Be concise; do not invent greetings or signatures.
+
+Final self-check before you submit: if your answer describes ANY plan provision or figure \
+from the sources, then has_clear_answer MUST be true and citations MUST be non-empty."""
 
 ANSWER_TOOL = {
     "name": "submit_answer",
@@ -47,9 +63,19 @@ ANSWER_TOOL = {
     "input_schema": {
         "type": "object",
         "properties": {
-            "answer": {
+            "assessment": {
                 "type": "string",
-                "description": "The drafted reply text, grounded only in the sources.",
+                "description": (
+                    "FILL THIS FIRST. In one or two sentences, state whether the SOURCES "
+                    "contain a provision or figure that addresses the sender's question, "
+                    "naming the relevant [Source N]. If any source addresses it (even "
+                    "conditionally), has_clear_answer must be true and you must cite it. "
+                    "Only if no source addresses the main question is has_clear_answer false."
+                ),
+            },
+            "has_clear_answer": {
+                "type": "boolean",
+                "description": "True only if the sources clearly and fully answer the question.",
             },
             "citations": {
                 "type": "array",
@@ -68,12 +94,13 @@ ANSWER_TOOL = {
                     "required": ["doc", "section", "page", "quote"],
                 },
             },
-            "has_clear_answer": {
-                "type": "boolean",
-                "description": "True only if the sources clearly and fully answer the question.",
+            "answer": {
+                "type": "string",
+                "description": "The drafted reply text, grounded only in the sources. Keep it "
+                "focused and reasonably concise so the full structured response fits.",
             },
         },
-        "required": ["answer", "citations", "has_clear_answer"],
+        "required": ["assessment", "has_clear_answer", "citations", "answer"],
     },
 }
 
@@ -111,8 +138,13 @@ def _client():
     return Anthropic(api_key=config.require("ANTHROPIC_API_KEY"))
 
 
-def generate(question: str, hits: list[Hit], max_tokens: int = 1024) -> dict:
-    """Call Claude with the grounding prompt and return the structured answer dict."""
+def generate(question: str, hits: list[Hit], max_tokens: int = 2048) -> dict:
+    """Call Claude with the grounding prompt and return the structured answer dict.
+
+    Control fields (has_clear_answer, citations) are ordered before the long ``answer``
+    field in the schema, so if the response is ever truncated the grounding metadata is
+    still intact. max_tokens is generous to avoid truncating the answer prose itself.
+    """
     resp = _client().messages.create(
         model=config.ANTHROPIC_MODEL,
         max_tokens=max_tokens,
@@ -121,6 +153,9 @@ def generate(question: str, hits: list[Hit], max_tokens: int = 1024) -> dict:
         tools=[ANSWER_TOOL],
         tool_choice={"type": "tool", "name": "submit_answer"},
     )
+    if resp.stop_reason == "max_tokens":
+        # Answer prose was cut off, but the ordered control fields should still be present.
+        print(f"[warn] generation hit max_tokens ({max_tokens}); answer may be truncated.")
     for block in resp.content:
         if getattr(block, "type", None) == "tool_use" and block.name == "submit_answer":
             return dict(block.input)

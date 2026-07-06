@@ -1,4 +1,5 @@
-"""Commit-3 smoke test: confirm the built index retrieves sane chunks.
+"""
+smoke test: confirm the built index retrieves sane chunks.
 
 Runs a few benefits questions against the live index and prints the top hits with
 their citations. Two of these are the hardest cases from the sample emails and we

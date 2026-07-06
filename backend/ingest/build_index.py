@@ -1,4 +1,5 @@
-"""Upsert chunks into a Pinecone integrated-embedding index.
+"""
+Upsert chunks into a Pinecone integrated-embedding index.
 
 Reads data/chunks.jsonl (produced by chunk.py) and upserts each chunk as a text record.
 Pinecone embeds the ``text`` field server-side (no external embedding key). Non-empty
